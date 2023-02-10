@@ -1,0 +1,6 @@
+0
+RAM Total,"node_memory_MemTotal_bytes{instance=""192.168.1.142:9100"",job=""test_machine""}"
+RAM Used,"node_memory_MemFree_bytes{instance=""192.168.1.142:9100"",job=""test_machine""}-node_memory_Cached_bytes{instance=""192.168.1.142:9100"",job=""test_machine""}-node_memory_Buffers_bytes{instance=""192.168.1.142:9100"",job=""test_machine""}"
+RAM Cache,"node_memory_Cached_bytes{instance=""192.168.1.142:9100"",job=""test_machine""}"
+RAM Free,"node_memory_MemFree_bytes{instance=""192.168.1.142:9100"",job=""test_machine""}"
+SWAP Used,"node_memory_SwapTotal_bytes{instance=""192.168.1.142:9100"",job=""test_machine""}-node_memory_SwapFree_bytes{instance=""192.168.1.142:9100"",job=""test_machine""}"
