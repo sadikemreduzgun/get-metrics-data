@@ -4,7 +4,6 @@ import pandas as pd
 import re
 import numpy as np
 from datetime import datetime
-from bitmath import *
 
 # defining changable variables
 start_date='2023-01-31T12:10:30.781Z'
@@ -44,8 +43,7 @@ for query in name_and_query.iloc[:,1]:
     else:
     
         temp_data = np.concatenate((temp_data, metric.T), axis=1)
-
-print(temp_data)
+        
 
 # start title list with one title which is the same for all
 titles = ['time_stamp']
@@ -54,6 +52,7 @@ titles = ['time_stamp']
 for names in name_and_query.iloc[:,0]:
     titles.append(names)
 
+# a function to convert byte into megabyte
 def div(x):
     x = x/1048576
     y="{:.3f}".format(x)
@@ -63,10 +62,13 @@ def div(x):
 # get data into dataframe object
 dataframe = pd.DataFrame(temp_data,columns=titles)
 
+# turn time stamp data into clear data
 dataframe["DateTime"] = dataframe.apply(lambda x: datetime.fromtimestamp(float(x["time_stamp"])), axis=1)
 
+# turn byte data into mb data
 for cols in dataframe.columns:
-    if (cols !=  "time_stamp") and (cols != "DateTime"): 
+    if (cols !=  "time_stamp") and (cols != "DateTime"):
+        # usage of created div function
         dataframe[cols] = dataframe.apply(lambda y: div(float(y[cols])), axis = 1)
 
 # save dataframe into new created csv
